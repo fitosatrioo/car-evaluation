@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Car Evaluation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: var(--light-bg);
+            color: #333;
+        }
+        
+        .container {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--danger-color);
+            font-size: 2.2rem;
+        }
+        
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Something went wrong</h1>
+        
+        <div class="error-container">
+            <i class="fas fa-exclamation-circle error-icon"></i>
+            <div class="error-message">
+                <p>An error occurred during car evaluation:</p>
+                <p><strong>{{ error }}</strong></p>
+            </div>
+            <p>Don't worry, you can try again by returning to the home page.</p>
+            <a href="{{ url_for('home') }}" class="back-button">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+        
+        <div class="footer">
+            Car Evaluation System &copy; 2025
+        </div>
+    </div>
+</body>
+</html>

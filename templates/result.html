@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Evaluation Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-header">Car Evaluation Results</h1>
+        
+        <a href="/" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Evaluation Form
+        </a>
+        
+        <div class="result-container">
+            <div class="result-header">Evaluation Result:</div>
+            <div class="result-value {{ prediction_class }}">{{ prediction }}</div>
+        </div>
+        
+        <h3>Car Specifications:</h3>
+        <table class="specs-table">
+            <tr>
+                <th>Feature</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Buying Price</td>
+                <td>{{ input_labels.buying }}</td>
+            </tr>
+            <tr>
+                <td>Maintenance Price</td>
+                <td>{{ input_labels.maintenance }}</td>
+            </tr>
+            <tr>
+                <td>Number of Doors</td>
+                <td>{{ input_labels.doors }}</td>
+            </tr>
+            <tr>
+                <td>Persons Capacity</td>
+                <td>{{ input_labels.persons }}</td>
+            </tr>
+            <tr>
+                <td>Luggage Boot Size</td>
+                <td>{{ input_labels.luggage }}</td>
+            </tr>
+            <tr>
+                <td>Safety Rating</td>
+                <td>{{ input_labels.safety }}</td>
+            </tr>
+        </table>
+        
+        <div class="footer">
+            Car Evaluation System © Kerajaan Rongawi
+        </div>
+    </div>
+</body>
+</html>

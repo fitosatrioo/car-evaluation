@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Evaluation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="main-header">Car Evaluation System</h1>
+            <div class="car-showcase">
+                <!-- <img src="https://www.car-silhouette.com/images/mercedes-benz/mercedes-benz-amg-gt.png" alt="Modern Car" class="car-image"> -->
+                <img src="/static/img/mobil abu.png" alt="Modern Car" class="car-image">
+            </div>
+        </div>
+
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            Enter the specifications below to evaluate your car's overall rating.
+        </div>
+
+        <form action="/predict" method="POST" class="evaluation-form">
+            <div class="form-columns">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="buying"><i class="fas fa-tag"></i> Buying Price:</label>
+                        <select id="buying" name="buying" required>
+                            <option value="" disabled selected>Select buying price</option>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                            <option value="3">Very High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="doors"><i class="fas fa-door-open"></i> Number of Doors:</label>
+                        <select id="doors" name="doors" required>
+                            <option value="" disabled selected>Select number of doors</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 or more</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="luggage"><i class="fas fa-suitcase"></i> Luggage Boot Size:</label>
+                        <select id="luggage" name="luggage" required>
+                            <option value="" disabled selected>Select luggage boot size</option>
+                            <option value="0">Small</option>
+                            <option value="1">Medium</option>
+                            <option value="2">Big</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="maintenance"><i class="fas fa-tools"></i> Maintenance Price:</label>
+                        <select id="maintenance" name="maintenance" required>
+                            <option value="" disabled selected>Select maintenance price</option>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                            <option value="3">Very High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persons"><i class="fas fa-users"></i> Persons Capacity:</label>
+                        <select id="persons" name="persons" required>
+                            <option value="" disabled selected>Select persons capacity</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">More than 5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="safety"><i class="fas fa-shield-alt"></i> Safety Rating:</label>
+                        <select id="safety" name="safety" required>
+                            <option value="" disabled selected>Select safety rating</option>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <i class="fas fa-check-circle"></i> Evaluate Car
+            </button>
+        </form>
+
+        <div class="footer">
+            Car Evaluation System © Kerajaan Rongawi
+        </div>
+    </div>
+</body>
+
+</html>
