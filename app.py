@@ -7,9 +7,10 @@ from logging.handlers import RotatingFileHandler
 
 # Configure logging
 def setup_logging(app):
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
-    file_handler = RotatingFileHandler('logs/car_evaluation.log', maxBytes=10240, backupCount=10)
+    log_dir = os.path.join('.', 'logs')
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
+    file_handler = RotatingFileHandler(os.path.join(log_dir, 'car_evaluation.log'), maxBytes=10240, backupCount=10)
     file_handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
     ))
@@ -21,8 +22,10 @@ def setup_logging(app):
 class Config:
     """Application configuration"""
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-key-please-change-in-production'
-    MODEL_PATH = os.path.join('save_models', 'model.pkl')
-    SCALER_PATH = os.path.join('save_models', 'scaler.pkl')
+    MODEL_PATH = os.path.join('.', 'save_models', 'model.pkl')
+    SCALER_PATH = os.path.join('.', 'save_models', 'scaler.pkl')
+    STATIC_FOLDER = os.path.join('.', 'static')
+    TEMPLATE_FOLDER = os.path.join('.', 'templates')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
 
 class CarFeatureLabels:
@@ -57,8 +60,7 @@ class CarFeatureLabels:
 
 class CarEvaluationModel:
     """Class to handle the car evaluation prediction model"""
-    
-    def __init__(self, model_path='save_models/model.pkl'):
+      def __init__(self, model_path='./save_models/model.pkl'):
         """Initialize the model from the pickle file"""
         self.model = self._load_model(model_path)
     
